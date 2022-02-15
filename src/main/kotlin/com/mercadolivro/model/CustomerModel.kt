@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 
-@Entity(name = "customer" )
+@Entity(name = "customer")
 data class CustomerModel(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

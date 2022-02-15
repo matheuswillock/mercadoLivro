@@ -4,7 +4,7 @@ import com.mercadolivro.controller.request.PostCustomerRequest
 import com.mercadolivro.model.CustomerModel
 
 fun PostCustomerRequest.toCustomerModelWithoutId(): CustomerModel {
-    return CustomerModel(id=null, name=this.name, email=this.email)
+    return CustomerModel(null, this.name, this.email)
 }
 
 fun PostCustomerRequest.toCustomerModelWithId(id: Int): CustomerModel {

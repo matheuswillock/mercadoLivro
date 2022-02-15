@@ -1,8 +1,8 @@
 package com.mercadolivro.controller
 
 import com.mercadolivro.controller.request.PostCustomerRequest
-import com.mercadolivro.extension.toCustomerModelWithoutId
 import com.mercadolivro.extension.toCustomerModelWithId
+import com.mercadolivro.extension.toCustomerModelWithoutId
 import com.mercadolivro.service.CustomerService
 import io.micronaut.http.annotation.*
 
@@ -27,5 +27,4 @@ class CustomerController(
 
     @Delete("/{id}")
     fun deleteCustomer(@QueryValue id: Int) = customerService.deleteCustomer(id)
-
 }

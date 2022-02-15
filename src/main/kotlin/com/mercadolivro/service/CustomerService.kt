@@ -19,14 +19,16 @@ class CustomerService(
         }
 
     fun getCustomer(name: String?): Any = try {
-        HttpResponse.ok(name?.let{
-            customerRepository.findByName(it)
-        })
+        HttpResponse.ok(
+            name?.let {
+                customerRepository.findByName(it)
+            }
+        )
     } catch (ex: Exception) {
         HttpResponse.ok(customerRepository.findAll())
     }
-    
-    fun getCutomerById(id: Int): Any = when(customerRepository.existsById(id)) {
+
+    fun getCutomerById(id: Int): Any = when (customerRepository.existsById(id)) {
         false -> {
             HttpResponse.notFound()
         }
@@ -37,16 +39,15 @@ class CustomerService(
 
     fun updateCustomer(customer: CustomerModel) = try {
         HttpResponse.ok(customerRepository.update(customer))
-    } catch ( ex: Exception) {
-         HttpResponse.notFound()
+    } catch (ex: Exception) {
+        HttpResponse.notFound()
     }!!
 
-    fun deleteCustomer(id: Int) =  when(customerRepository.existsById(id)) {
+    fun deleteCustomer(id: Int) = when (customerRepository.existsById(id)) {
         true -> {
             customerRepository.deleteById(id)
             HttpStatus.NO_CONTENT
         }
         else -> HttpStatus.NOT_FOUND
     }
-
 }
